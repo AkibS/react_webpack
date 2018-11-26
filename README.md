@@ -39,11 +39,11 @@ steps to integrate webpack with raw structure:
     npm i webpack-cli --save-dev
 
 6. Add Following to package.json
-
+```
     "scripts": {
     "build": "webpack --mode production"
     }
-
+```
 7. 
 
 As it is raw structure we need to add webpack loader:
@@ -58,11 +58,11 @@ Required following:
     npm i @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev
 
 Configure babel, Create a new file named .babelrc inside the project folder
-
+```
     {
     "presets": ["@babel/preset-env", "@babel/preset-react"]
     }
-
+```
 8. Add React Dependencies
 
 npm i react react-dom --save-dev
@@ -72,7 +72,7 @@ create directories
 mkdir -p src/js/components/{container,presentational}
 
 9. Create File inside container AppLayout.js
-
+```
     import React, { Component } from "react";
 
 
@@ -92,12 +92,12 @@ mkdir -p src/js/components/{container,presentational}
         }
         }
         export default AppLayout;
-
+```
 10. 
     To display our React form we must tell Webpack to produce an HTML page. The resulting bundle will be placed inside a <script></script>tag.
 
     create src\index.html
-
+```
     <!DOCTYPE html>
     <html lang="en">
 
@@ -122,7 +122,7 @@ mkdir -p src/js/components/{container,presentational}
     </body>
 
     </html> 
-
+```
 
 Webpacks needs two additional components for processing HTML: html-webpack-plugin and html-loader.
 
@@ -131,7 +131,7 @@ npm i html-webpack-plugin html-loader --save-dev
 11. Create file webpack.config.js at base directory
 
     add following configuration to same:
-
+```
     const HtmlWebPackPlugin = require("html-webpack-plugin");
 
     module.exports = {
@@ -161,11 +161,11 @@ npm i html-webpack-plugin html-loader --save-dev
         })
     ]
     };
-
+```
 10. Webpack expects entry point index.js
 
     add file to src\index.js
-
+```
     import React, { Component } from "react";
     import ReactDOM from "react-dom";
 
@@ -173,7 +173,7 @@ npm i html-webpack-plugin html-loader --save-dev
 
     const wrapper = document.getElementById("root");
     wrapper ? ReactDOM.render(<AppLayout />, wrapper) : false;
-
+```
 11. npm run build
 
 
@@ -181,12 +181,12 @@ Configuring Development Server for above implementation
 
 1. npm i webpack-dev-server --save-dev
 2. open packeg.json and update 
-
+```
 "scripts": {
   "start": "webpack-dev-server --open --mode development",
   "build": "webpack"
 }
-
+```
 3. npm start
 
 
